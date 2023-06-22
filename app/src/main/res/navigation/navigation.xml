@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/levelScreen">
+
+    <fragment
+        android:id="@+id/levelScreen"
+        android:name="uz.gita.hk_memory_game.ui.screen.LevelScreen"
+        android:label="LevelScreen"
+        tools:layout="@layout/screen_level">
+        <action
+            android:id="@+id/action_levelScreen_to_gameScreen"
+            app:destination="@id/gameScreen"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/levelScreen" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameScreen"
+        android:name="uz.gita.hk_memory_game.ui.screen.GameScreen"
+        android:label="GameScreen"
+        tools:layout="@layout/screen_game">
+        <argument
+            android:name="level"
+            app:argType="uz.gita.hk_memory_game.data.LevelEnum" />
+        <action
+            android:id="@+id/action_gameScreen_to_infoScreen"
+            app:destination="@id/infoScreen"
+            app:popUpTo="@id/gameScreen"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/infoScreen"
+        android:name="uz.gita.hk_memory_game.ui.screen.InfoScreen"
+        android:label="InfoScreen"
+        tools:layout="@layout/screen_info"/>
+</navigation>
